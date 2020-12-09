@@ -1,0 +1,22 @@
+#sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+
+lxpanel --profile LXDE-pi
+pcmanfm --desktop --profile LXDE-pi
+xscreensaver -no-splash
+
+#sudo sh -c "echo 200 > /sys/class/backlight/rpi_backlight/brightness"
+
+xset -dpms
+xset s noblank
+xset s off
+unclutter
+
+# Remove exit errors from the config files that could trigger a warning
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
+
+sleep 5
+chromium --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --disable-component-update --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --incognito --kiosk http://localhost:3000/d/FzWC31mRz/display?orgId=1&refresh=1mfrom=now-24h&to=now&kiosk
+
+
+
