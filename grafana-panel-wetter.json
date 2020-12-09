@@ -1,0 +1,143 @@
+{
+  "datasource": "localhost",
+  "description": "",
+  "fieldConfig": {
+    "defaults": {
+      "custom": {
+        "align": null,
+        "filterable": false
+      },
+      "unit": "none",
+      "displayName": "Wetter",
+      "color": {
+        "mode": "thresholds"
+      },
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "dark-blue",
+            "value": null
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "from": "",
+          "id": 1,
+          "text": "Klar",
+          "to": "",
+          "type": 1,
+          "value": "Clear"
+        },
+        {
+          "from": "",
+          "id": 2,
+          "text": "Wolkig",
+          "to": "",
+          "type": 1,
+          "value": "Clouds"
+        },
+        {
+          "from": "",
+          "id": 3,
+          "text": "Diesig",
+          "to": "",
+          "type": 1,
+          "value": "Mist"
+        },
+        {
+          "from": "",
+          "id": 4,
+          "text": "Nieseln",
+          "to": "",
+          "type": 1,
+          "value": "Drizzle"
+        },
+        {
+          "from": "",
+          "id": 5,
+          "text": "Nebel",
+          "to": "",
+          "type": 1,
+          "value": "Fog"
+        },
+        {
+          "from": "",
+          "id": 6,
+          "text": "Regen",
+          "to": "",
+          "type": 1,
+          "value": "Rain"
+        },
+        {
+          "from": "",
+          "id": 7,
+          "text": "Schnee",
+          "to": "",
+          "type": 1,
+          "value": "Snow"
+        }
+      ]
+    },
+    "overrides": []
+  },
+  "gridPos": {
+    "h": 6,
+    "w": 6,
+    "x": 0,
+    "y": 6
+  },
+  "id": 34,
+  "maxDataPoints": 500,
+  "options": {
+    "reduceOptions": {
+      "values": false,
+      "calcs": [
+        "lastNotNull"
+      ],
+      "fields": "/.*/"
+    },
+    "orientation": "auto",
+    "textMode": "auto",
+    "colorMode": "background",
+    "graphMode": "none",
+    "justifyMode": "center"
+  },
+  "pluginVersion": "7.3.3",
+  "targets": [
+    {
+      "format": "table",
+      "group": [],
+      "hide": false,
+      "metricColumn": "none",
+      "rawQuery": true,
+      "rawSql": "SELECT value FROM wetter WHERE type = 'weather' ORDER BY date DESC LIMIT 1",
+      "refId": "A",
+      "select": [
+        [
+          {
+            "params": [
+              "id"
+            ],
+            "type": "column"
+          }
+        ]
+      ],
+      "table": "data",
+      "timeColumn": "timestamp",
+      "timeColumnType": "timestamp",
+      "where": [
+        {
+          "name": "$__timeFilter",
+          "params": [],
+          "type": "macro"
+        }
+      ]
+    }
+  ],
+  "timeFrom": null,
+  "timeShift": null,
+  "title": "",
+  "type": "stat"
+}

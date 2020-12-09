@@ -1,0 +1,91 @@
+{
+  "datasource": "localhost",
+  "description": "",
+  "fieldConfig": {
+    "defaults": {
+      "custom": {
+        "align": null,
+        "filterable": false
+      },
+      "unit": "none",
+      "displayName": "Luft",
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "dark-blue",
+            "value": null
+          },
+          {
+            "color": "dark-orange",
+            "value": 1000
+          },
+          {
+            "color": "dark-red",
+            "value": 1400
+          }
+        ]
+      },
+      "mappings": []
+    },
+    "overrides": []
+  },
+  "gridPos": {
+    "h": 6,
+    "w": 6,
+    "x": 12,
+    "y": 6
+  },
+  "id": 32,
+  "maxDataPoints": 500,
+  "options": {
+    "reduceOptions": {
+      "values": false,
+      "calcs": [
+        "firstNotNull"
+      ],
+      "fields": ""
+    },
+    "orientation": "auto",
+    "textMode": "auto",
+    "colorMode": "background",
+    "graphMode": "none",
+    "justifyMode": "center"
+  },
+  "pluginVersion": "7.3.3",
+  "targets": [
+    {
+      "format": "time_series",
+      "group": [],
+      "hide": false,
+      "metricColumn": "none",
+      "rawQuery": true,
+      "rawSql": "SELECT $__time(date), CAST(value as double) FROM co2 WHERE type = 'co2' AND $__timeFilter(date) ORDER BY date DESC",
+      "refId": "A",
+      "select": [
+        [
+          {
+            "params": [
+              "id"
+            ],
+            "type": "column"
+          }
+        ]
+      ],
+      "table": "data",
+      "timeColumn": "timestamp",
+      "timeColumnType": "timestamp",
+      "where": [
+        {
+          "name": "$__timeFilter",
+          "params": [],
+          "type": "macro"
+        }
+      ]
+    }
+  ],
+  "timeFrom": null,
+  "timeShift": null,
+  "title": "",
+  "type": "stat"
+}
